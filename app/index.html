@@ -9,6 +9,9 @@
 
     {{content-for "head"}}
 
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/editormd/css/editormd.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/editormd/css/editormd.preview.css">
+
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/coder-note.css">
 
@@ -17,8 +20,27 @@
   <body>
     {{content-for "body"}}
 
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="{{rootURL}}assets/editormd/lib/zepto.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/codemirror/codemirror.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/marked.min.js"></script>
+
+    <script src="{{rootURL}}assets/editormd/lib/prettify.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/raphael.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/underscore.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/flowchart.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="{{rootURL}}assets/editormd/editormd.js"></script>
+
+    <script type="text/javascript">
+    
+    </script>
+
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/coder-note.js"></script>
+
 
     {{content-for "body-footer"}}
   </body>

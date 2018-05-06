@@ -1,0 +1,146 @@
+
+<div class="container-fluid note-index">
+	{{! 首页分为3列，第一列是笔记本列表，第二列是笔记信息}}
+	<div class="row note-row">
+		{{! 笔记本列表}}
+		<div class="col-sm-2 col-md-2 col-lg-2 clear-padding notebook">
+			<ul class="list-group notebook-list">
+			  <li class="list-group-item clear-border-radius">
+				  <!-- <span class="glyphicon glyphicon-book" aria-hidden="true"></span> -->
+				  <span class="parent-note-book-font">Java技术</span>
+				  <ul class="sub-notebook-list">
+					  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md1'}}>Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md2'}}>Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md3'}}>Vestibulum at eros</li>
+				  </ul>
+			  </li>
+			  <li class="list-group-item clear-border-radius">
+				  <span class="parent-note-book-font">软件配置</span>
+				  <ul class="sub-notebook-list">
+					  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md4'}}>Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md5'}}>Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md6'}}>Vestibulum at eros</li>
+					  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md7'}}>Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md8'}}>Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md9'}}>Vestibulum at eros</li>
+					  <li class="list-group-item clear-border-radius" {{action 'showMarkdownContent' 'md10'}}>Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius">Porta ac consectetur acPorta ac consectetur ac</li>
+  	  			  	  <li class="list-group-item clear-border-radius">Vestibulum at eros</li>
+					  <li class="list-group-item clear-border-radius">Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius">Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius">Vestibulum at eros</li>
+					  <li class="list-group-item clear-border-radius">Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius">Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius">Vestibulum at eros</li>
+					  <li class="list-group-item clear-border-radius">Morbi leo risus</li>
+	  	  			  <li class="list-group-item clear-border-radius">Porta ac consectetur acPorta ac consectetur ac</li>
+	  	  			  <li class="list-group-item clear-border-radius">Vestibulum at eros</li>
+				  </ul>
+			  </li>
+
+			</ul>
+		</div>
+
+		{{! 笔记信息}}
+		<div class="col-sm-10 col-md-10 col-lg-10 editor-content"
+            id="markdown-editor" {{action "edit" fileName on="doubleClick"}}>
+
+            {{! 展示笔记}}
+            <div id="editormd-view"></div>
+
+            <div id="editormd">
+                <textarea style="display:none;">
+                    [TOC]
+                    #### 获取父路由的参数
+
+                    ## 删除
+
+                    ```javascript
+                    App.ApplicationAdapter = DS.Adapter.extend({
+                    deleteRecord: function(store, type, record) {
+                    var data = this.serialize(record, { includeId: true });
+                    var id = record.get('id');
+                    var url = [type, id].join('/');
+
+                    return new Ember.RSVP.Promise(function(resolve, reject) {
+                      jQuery.ajax({
+                        type: 'DELETE',
+                        url: url,
+                        dataType: 'json',
+                        data: data
+                      }).then(function(data) {
+                        Ember.run(null, resolve, data);
+                      }, function(jqXHR) {
+                        jqXHR.then = null; // tame jQuery's ill mannered promises
+                        Ember.run(null, reject, jqXHR);
+                      });
+                    });
+                    }
+                    });
+                    ```
+
+                    ```js
+                    this.parentController.getProperties(this.parentController.queryParams);
+                    ```
+
+                    [https://github.com/emberjs/rfcs/blob/master/text/0050-improved-actions.md](https://github.com/emberjs/rfcs/blob/master/text/0050-improved-actions.md)
+
+                    ### 2. 使用数组下标取值
+                    ```js
+                    model() {
+                    return [
+                    [1, "text a"],
+                    [2, "text b"],
+                    [3, "text c"],
+                    ]
+                    }
+                    ```
+                    ```html
+                    <ul>
+                    {{#each model as |item|}}
+                    <li>
+                    {{item.[0]}}: {{item.[1]}}
+                    </li>
+                    {{/each}}
+                    </ul>
+
+                    <ul>
+                    {{#each model as |item|}}
+                    <li>
+                    {{item.0.text}}: {{item.1.text}}
+                    </li>
+                    {{/each}}
+                    </ul>
+
+                    {{#each model as |item index|}}
+                    Index is: {{index}}
+                    {{/each}}
+                    ```
+
+                    ## 服务程序
+                    ```js
+                    // server/index.js
+
+                    // other dependencies installed via `npm install --save-dev`
+                    var bodyParser = require('body-parser');
+
+                    module.exports = function(app) {
+
+                    app.use(bodyParser.json({ type: "application/json" }));
+
+                    app.get('/api/items/:item', function(req, res) {
+                    const item = localdb.find('item', req.params.item);
+                    res.send({ item: item });
+                    });
+
+                    // other API endpoints
+
+                    }
+                    ```
+                </textarea>
+            </div>
+
+		</div>
+
+	</div>
+</div>

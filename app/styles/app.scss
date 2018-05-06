@@ -1,0 +1,57 @@
+@import "bootstrap";
+@import "editormd";
+
+.clear-padding {
+    padding: 0 !important;
+}
+.clear-border-radius {
+    border-radius: 0 !important;
+}
+.note-index {
+    overflow: hidden;
+}
+.note-index .editor-content {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    // cursor: pointer;
+}
+/* 笔记列表 */
+.note-index .notebook {
+    height: 100vh;
+    background-color: #2E3235;
+}
+.note-index .notebook-list {
+    overflow: scroll;
+    height: 100vh;
+}
+.note-index .notebook-list ul {
+    background-color: #2E3235;
+}
+.note-index .notebook-list li {
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* height: 45px; */
+    padding: 2px 10px;
+    /* background-color: red; */
+    background-color: #2E3235;
+    border: 0;
+    color: white;
+}
+.note-index .notebook-list li .sub-notebook-list {
+    padding-left: 10px;
+}
+.note-index .notebook-list li .parent-note-book-font {
+    font-size: 16px;
+}
+.note-index .notebook-list li:first-child {
+    /* background-color: #DB4D52; */
+}
+.note-index .notebook-list li:active {
+    /* background-color: #DB4D52; */
+}
+.note-index .notebook-list li .glyphicon {
+    /* color: white; */
+}
