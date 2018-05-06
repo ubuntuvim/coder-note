@@ -1,6 +1,12 @@
 @import "bootstrap";
 @import "editormd";
 
+body {
+    overflow: hidden;
+    min-width: 768px;
+    // width:expression_r(document.body.clientWidth < 768 ? "768px": "auto" );
+}
+
 .clear-padding {
     padding: 0 !important;
 }
